@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Context from './Context';
+import {grey,lightBlue} from '@material-ui/core/colors';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: lightBlue[800],
+      light:  lightBlue[50],
+      dark: lightBlue[500]
+    }, secondary: {
+      main: grey[50],
+      light: grey[50],
+      dark: grey[800]
+    }, third: {
+      main: grey[900]
+    }
+  },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ]
+  }
+});
+
+export default function App(){
+  return(
+  <MuiThemeProvider theme= {theme}>
+    <Context />
+  </MuiThemeProvider>
+  )
 }
-
-export default App;
